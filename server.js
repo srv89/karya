@@ -6,10 +6,10 @@ var morgan = require('morgan');
 var db = require('./db.js');
 var app = express();
 
-var PORT = process.ENV.PORT || 3000;
-var ENV = process.ENV.NODE_ENV || 'development';
+var PORT = process.env.PORT || 3000;
+var ENV = process.env.NODE_ENV || 'development';
 
-if (PORT == 3000) {
+if (ENV == 3000) {
 	app.use(morgan('common'));
 }
 
