@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DateTypes) {
+module.exports = function(sequelize, DateTypes) {
 	return sequelize.define('user', {
 		email: {
 			type: DateTypes.STRING,
@@ -6,13 +6,6 @@ module.exports = function (sequelize, DateTypes) {
 			unique: true,
 			validate: {
 				isEmail: true
-			},
-			hooks : {
-				beforeValidate: function (user, option) {
-					if (typeof user.email === 'string') {
-						user.email = user.email.toLowerCase();
-					}
-				}
 			}
 		},
 		password: {
@@ -21,6 +14,14 @@ module.exports = function (sequelize, DateTypes) {
 			validate: {
 				len: [7, 100]
 			}
-		}
+		},
+	}, {
+		hooks: {
+				beforeValidate: function(user, option) {
+					if (typeof user.email === 'string') {
+						user.email = user.email.toLowerCase();
+					}
+				}
+			}
 	});
 }
