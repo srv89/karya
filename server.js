@@ -9,7 +9,7 @@ var app = express();
 var PORT = process.env.PORT || 3000;
 var ENV = process.env.NODE_ENV || 'development';
 
-if (ENV == 3000) {
+if (ENV === 'development') {
 	app.use(morgan('common'));
 }
 
@@ -74,6 +74,7 @@ app.get('/todos', function(req, res) {
 // POST /todos
 app.post('/todos', function(req, res) {
 	var body = _.pick(req.body, 'description', 'completed');
+
 	if (typeof body.completed !== 'boolean') {
 		return res.status(400).json({
 			message: 'invalid completed type. "completed is of type boolean'
@@ -99,7 +100,7 @@ app.put('/todos/:id', function(req, res) {
 	}
 
 	if (ENV === 'production') { // Setting Postgres database to return affected row
-		options.returning = true; 
+		options.returning = true;
 	}
 
 	db.todo.update(body, options).then(function(updatedRows) {
@@ -145,6 +146,20 @@ app.delete('/todos/:id', function(req, res) {
 });
 
 
+
+// POST /users
+app.post('/users', function(req, res) {
+	var body = _.pick(req.body, 'email', 'password');
+
+	db.user.create(body).then(function(user) {
+		res.json(user.toJSON());
+
+	}, function(e) {
+		res.status(400).json(e);
+	})
+
+
+})
 
 db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
