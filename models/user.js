@@ -6,6 +6,13 @@ module.exports = function (sequelize, DateTypes) {
 			unique: true,
 			validate: {
 				isEmail: true
+			},
+			hooks : {
+				beforeValidate: function (user, option) {
+					if (typeof user.email === 'string') {
+						user.email = user.email.toLowerCase();
+					}
+				}
 			}
 		},
 		password: {
