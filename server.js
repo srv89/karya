@@ -149,8 +149,8 @@ app.delete('/todos/:id', function(req, res) {
 
 // GET /users
 app.get('/users', function (req, res) {
-	db.user.count().then(function (users){
-		res.json({"userCount": users});
+	db.user.count().then(function (userCount){
+		res.json({"userCount": userCount});
 	});
 
 });
