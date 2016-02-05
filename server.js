@@ -19,13 +19,13 @@ if (ENV === 'development') {
 app.use(bodyParser.json());
 
 
-//GET /
+//GET (Path: /)
 app.get('/', function(req, res) {
 	res.send('Todo API Root');
 });
 
 
-// GET /todos/:id
+// GET (Path: /todos/:id)
 app.get('/todos/:id', middleware.requireAuthentication, function(req, res) {
 	var todoId = parseInt(req.params.id, 10);
 	var where = {
@@ -47,7 +47,7 @@ app.get('/todos/:id', middleware.requireAuthentication, function(req, res) {
 });
 
 
-// GET /todos?completed=false&q=work
+// GET (Path: /todos?completed=false&q=work)
 app.get('/todos', middleware.requireAuthentication, function(req, res) {
 	var query = req.query;
 	var where = {
@@ -83,7 +83,7 @@ app.get('/todos', middleware.requireAuthentication, function(req, res) {
 });
 
 
-// POST /todos
+// POST (Path: /todos) 
 app.post('/todos', middleware.requireAuthentication, function(req, res) {
 	var body = _.pick(req.body, 'description', 'completed');
 	body.userId = req.user.id;
@@ -96,7 +96,7 @@ app.post('/todos', middleware.requireAuthentication, function(req, res) {
 });
 
 
-// PUT /todos/:id
+// PUT (Path: /todos/:id)
 app.put('/todos/:id', middleware.requireAuthentication, function(req, res) {
 	var todoId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, 'description', 'completed');
@@ -132,7 +132,7 @@ app.put('/todos/:id', middleware.requireAuthentication, function(req, res) {
 });
 
 
-// DELETE /todos/:id
+// DELETE (Path: /todos/:id)
 app.delete('/todos/:id', middleware.requireAuthentication, function(req, res) {
 	var todoId = parseInt(req.params.id, 10);
 
@@ -155,7 +155,7 @@ app.delete('/todos/:id', middleware.requireAuthentication, function(req, res) {
 });
 
 
-// GET /users
+// GET (Path: /users)
 app.get('/users', function(req, res) {
 	db.user.count().then(function(userCount) {
 		res.json({
@@ -166,7 +166,7 @@ app.get('/users', function(req, res) {
 });
 
 
-// POST /users
+// POST (Path: /users)
 app.post('/users', function(req, res) {
 	var body = _.pick(req.body, 'email', 'password');
 
@@ -180,7 +180,7 @@ app.post('/users', function(req, res) {
 });
 
 
-// POST /users/login
+// POST (Path: /users/login)
 app.post("/users/login", function(req, res) {
 	var body = _.pick(req.body, 'email', 'password');
 
