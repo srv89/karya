@@ -77,13 +77,8 @@ app.get('/todos', middleware.requireAuthentication, function(req, res) {
 // POST /todos
 app.post('/todos', middleware.requireAuthentication, function(req, res) {
 	var body = _.pick(req.body, 'description', 'completed');
-
-	if (typeof body.completed !== 'boolean') {
-		return res.status(400).json({
-			message: 'invalid completed type. "completed is of type boolean'
-		});
-	}
-
+	body.userId = req.user.id;
+	
 	db.todo.create(body).then(function(todo) {
 		res.json(todo.toJSON());
 	}, function(e) {
