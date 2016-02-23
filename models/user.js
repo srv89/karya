@@ -2,7 +2,11 @@ var bcrypt = require('bcrypt');
 var _ = require('underscore');
 var cryptojs = require('crypto-js');
 var jwt = require('jsonwebtoken');
-var config = require('../.env/config.js');
+var ENV = process.env.NODE_ENV || 'development';
+
+if (ENV === "development") {
+	var config = require('../.env/config.js');
+};
 
 
 var JWT_SECRET_KEY = process.env.JWT_SECRET_KEY || config.JWT_SECRET_KEY;

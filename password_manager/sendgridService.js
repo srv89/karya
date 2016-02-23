@@ -1,4 +1,9 @@
-var config = require('../.env/config.js');
+var ENV = process.env.NODE_ENV || 'development';
+
+if (ENV === "development") {
+	var config = require('../.env/config.js');
+};
+
 var SENDGRID_API_KEY = process.env.SENDGRID_API_KEY || config.SENDGRID_API_KEY;
 console.log( "SENDGRID_API_KEY: ", SENDGRID_API_KEY);
 var sendgrid = require('sendgrid')(SENDGRID_API_KEY);
