@@ -7,14 +7,13 @@ if (ENV === "development") {
 	var SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 };
 
-console.log( "SENDGRID_API_KEY: ", SENDGRID_API_KEY);
 var sendgrid = require('sendgrid')(SENDGRID_API_KEY);
 
 
 var sendEmail = function (pincode, userEmail, callback) {
 	var payload = {
 		to: userEmail,
-		from: 'help@ntodo-api-nodejs.com',
+		from: 'help@todo-api-nodejs.com',
 		fromname: 'Node.js Todo API',
 		subject: 'Password Reset Pincode',
 		text: 'Pincode: ' + pincode

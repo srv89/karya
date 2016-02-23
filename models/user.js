@@ -16,8 +16,6 @@ if (ENV === "development") {
 var JWT_SECRET_KEY = process.env.JWT_SECRET_KEY || config.JWT_SECRET_KEY;
 var CRYPTOJS_SECRET_KEY = process.env.CRYPTOJS_SECRET_KEY || config.CRYPTOJS_SECRET_KEY;
 
-console.log(JWT_SECRET_KEY);
-console.log(CRYPTOJS_SECRET_KEY);
 
 module.exports = function(sequelize, DataTypes) {
 	var user = sequelize.define('user', {

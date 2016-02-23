@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 //GET (Path: /)
 app.get('/', function(req, res) {
-	res.send('Todo API Using Node.js');
+	res.redirect('https://github.com/srv89/todo-api');
 });
 
 
@@ -38,6 +38,7 @@ app.get('/todos/:id', middleware.requireAuthentication, function(req, res) {
 	db.todo.findOne({
 		where: where
 	}).then(function(todo) {
+		
 		if (todo) {
 			res.json(todo.toJSON());
 		} else {
