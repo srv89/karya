@@ -1,6 +1,6 @@
 # todo-api-nodejs
 
-> A grunt task for alphabetizing JSON files
+> A Node.js based TODO API
 
 
 
