@@ -13,10 +13,25 @@ This is a basic Node.js based todo API developed as a part of learning Node.js/E
 * 
 
 ### Todo API Description:
-#### API Endpoint: https://todo-api-nodejs.herokuapp.com
+###### API Endpoint: https://todo-api-nodejs.herokuapp.com
 
-#### Core Resources:
+#### Core Resources
 ##### 1. Todos
+###### Create a todo
+    Definition: POST /todos
+    Example Request: https://todo-api-nodejs.herokuapp.com/todos
+    Request Parameters: description (string)
+                        completed (boolean)
+    Example JSON Payload: { 
+                            "description":"Walk my dog",
+                            "completed":true
+                          }
+
+  
+Retrieve
+      GET /todos
+      
+  
 
 ##### 2. Users
 
