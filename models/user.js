@@ -2,6 +2,14 @@ var bcrypt = require('bcrypt');
 var _ = require('underscore');
 var cryptojs = require('crypto-js');
 var jwt = require('jsonwebtoken');
+var config = require('../.env/config.js');
+
+
+var JWT_SECRET_KEY = process.env.JWT_SECRET_KEY || config.JWT_SECRET_KEY;
+var CRYPTOJS_SECRET_KEY = process.env.CRYPTOJS_SECRET_KEY || config.CRYPTOJS_SECRET_KEY;
+
+console.log(JWT_SECRET_KEY);
+console.log(CRYPTOJS_SECRET_KEY);
 
 module.exports = function(sequelize, DataTypes) {
 	var user = sequelize.define('user', {
@@ -37,7 +45,6 @@ module.exports = function(sequelize, DataTypes) {
 	}, {
 		hooks: {
 			beforeValidate: function(user, options) {
-				// user.email
 				if (typeof user.email === 'string') {
 					user.email = user.email.toLowerCase();
 				}
@@ -69,8 +76,8 @@ module.exports = function(sequelize, DataTypes) {
 			findByToken: function(token) {
 				return new Promise(function(resolve, reject) {
 					try {
-						var decodedJWT = jwt.verify(token, 'qwerty098');
-						var bytes = cryptojs.AES.decrypt(decodedJWT.token, 'abc123!@#');
+						var decodedJWT = jwt.verify(token, JWT_SECRET_KEY);
+						var bytes = cryptojs.AES.decrypt(decodedJWT.token, CRYPTOJS_SECRET_KEY);
 						var tokenData = JSON.parse(bytes.toString(cryptojs.enc.Utf8));
 
 						user.findById(tokenData.id).then(function (user) {
@@ -103,10 +110,10 @@ module.exports = function(sequelize, DataTypes) {
 						id: this.get('id'),
 						type: type
 					});
-					var encryptedData = cryptojs.AES.encrypt(stringData, 'abc123!@#').toString();
+					var encryptedData = cryptojs.AES.encrypt(stringData, CRYPTOJS_SECRET_KEY).toString();
 					var token = jwt.sign({
 						token: encryptedData
-					}, 'qwerty098');
+					}, JWT_SECRET_KEY);
 
 					return token;
 				} catch (e) {
