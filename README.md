@@ -54,7 +54,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
     
     Filter/Search : /todos/completed=true (Returns all todos with completed status as true)
                     /todos/q=appointment (Returns all todos containing 'appoinment in description')
-                    /todoscompletd=false&q=call (Returns all todos with completed status as false and containing 'call' in description)
+                    /todos/completd=false&q=call (Returns all todos with completed status as false and containing 'call' in description)
                                 
                                 
 ###### Update a todo
