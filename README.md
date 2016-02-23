@@ -12,7 +12,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
 * [Underscore.js](http://underscorejs.org)
 
 ### Karya API Description:
-###### API Endpoint: https://todo-api-nodejs.herokuapp.com
+###### API Endpoint: https://karya.herokuapp.com
 
 #### Core Resources
 ##### 1. Todos
