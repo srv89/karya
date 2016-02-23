@@ -4,7 +4,7 @@
 
 This is a basic Node.js based todo API developed as a part of learning Node.js. The API is currently hosted on [Heroku](http://todo-api-nodejs.herokuapp.com) and fully functional to accept requests.
 
-#### Technologies & Libraries Used:
+### Technologies & Libraries Used:
 * [Node.js](https://nodejs.org/en/) 
 * [Express.js](http://expressjs.com) 
 * [PostgreSQL: Sequelize ORM](http://docs.sequelizejs.com/en/latest/) 
@@ -12,19 +12,26 @@ This is a basic Node.js based todo API developed as a part of learning Node.js. 
 * [Underscore.js](http://underscorejs.org)
 * 
 
-#### Todo API Description:
-**API Endpoint**: https://todo-api-nodejs.herokuapp.com
+### Todo API Description:
+#### API Endpoint: https://todo-api-nodejs.herokuapp.com
 
-**Core Resources**:
-###### Todos
-* CREATE
-* 
-* READ
-* UPDATE
-* DELETE
-GET /todos
-GET /todos/{id}
-GET /todos/q={}
+#### Core Resources:
+1. **Todos**
+  * CREATE
+    POST /todos
+
+  * READ
+    GET /todos
+
+  * UPDATE
+    PUT /todos/{id}
+
+  * DELETE
+  *   DELETE /todos/{id}
+  
+2. **Users**
+
+
 
 
 
