@@ -16,20 +16,9 @@ This is a basic Node.js based todo API developed as a part of learning Node.js. 
 #### API Endpoint: https://todo-api-nodejs.herokuapp.com
 
 #### Core Resources:
-1. **Todos**
-  * CREATE
-    POST /todos
+##### 1. Todos
 
-  * READ
-    GET /todos
-
-  * UPDATE
-    PUT /todos/{id}
-
-  * DELETE
-  *   DELETE /todos/{id}
-  
-2. **Users**
+##### 2. Users
 
 
 
