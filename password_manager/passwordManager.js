@@ -1,6 +1,6 @@
 var db = require('../db.js');
 var shortid = require('shortid');
-var sendgrid = require('./sendgridService.js');
+var sendgridService = require('./sendgridService.js');
 
 
 function deletePincode(userData, callback) {
@@ -24,7 +24,6 @@ var resetPassword = function(userData, callback) {
 	db.user.update(userData, options).then(function(updatedUser) {
 		callback(updatedUser);
 		deletePincode(userData, function(data) {
-			console.log("deletePincode func:", data)
 		});
 	}, function(e) {
 		callback(e);
@@ -48,7 +47,7 @@ var sendPincode = function(user, callback) {
 	};
 
 	savePincode(pincodeData, function(savedPincode) {
-		sendgrid.sendEmail(savedPincode.pincode, savedPincode.email, function(emailStatus) {
+		sendgridService.sendEmail(savedPincode.pincode, savedPincode.email, function(emailStatus) {
 			return callback(emailStatus);
 		});
 	});
