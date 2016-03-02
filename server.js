@@ -99,8 +99,8 @@ app.post('/todos', middleware.requireAuthentication, function(req, res) {
 });
 
 
-// PUT (Path: /todos/:id)
-app.put('/todos/:id', middleware.requireAuthentication, function(req, res) {
+// PATCH (Path: /todos/:id)
+app.patch('/todos/:id', middleware.requireAuthentication, function(req, res) {
 	var todoId = parseInt(req.params.id, 10);
 	var body = _.pick(req.body, 'description', 'completed');
 	var options = {
@@ -285,9 +285,7 @@ app.post('/users/update', function(req, res) {
 
 
 
-db.sequelize.sync({
-	force: true
-}).then(function() {
+db.sequelize.sync().then(function() {
 	app.listen(PORT, function() {
 		console.log('Express listening on PORT ' + PORT + '!');
 	});
