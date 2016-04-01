@@ -18,7 +18,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
 ##### 1. Todos
 ###### Create a todo
     Definition: POST /todos
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/todos
+    Example Request URI: https://karya.herokuapp.com/todos
     Request Header: content-type: application/json
                     Auth: authToken
     Request Parameters: description (string)
@@ -41,7 +41,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
   
 ###### Retrieve a todo
     Definition: GET /todos/{id}
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/todos/123
+    Example Request URI: https://karya.herokuapp.com/todos/123
     Request Header: Auth: authToken required.
     Response Body: {
                     "id": 123,
@@ -59,7 +59,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
                                 
 ###### Update a todo
     Definition: PUT /todos/{id} 
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/todos/123
+    Example Request URI: https://karya.herokuapp.com/todos/123
     Request Header: Auth: authToken required.
     Request Parameters: description (string)
                         completed (boolean)
@@ -72,7 +72,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
 
 ###### Delete a todo
     Definition: DELETE /todos/{id} 
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/todos/123
+    Example Request URI: https://karya.herokuapp.com/todos/123
     Request Header: Auth: authToken required.
     
     Note: Successful delete returns HTTP status 204 only
@@ -80,7 +80,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
 ##### 2. Users
 ###### Create a user
     Definition: POST /users
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/users
+    Example Request URI: https://karya.herokuapp.com/users
     Request Header: content-type: application/json
     Request Parameters: email (string)
                         password (string)
@@ -98,7 +98,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
     
 ###### Login a user
     Definition: POST /users/login
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/users/login
+    Example Request URI: https://karya.herokuapp.com/users/login
     Request Header: content-type: application/json
     Request Parameters: email (string)
                         password (string)
@@ -116,7 +116,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
 
 ###### Logout a user
     Definition: DELETE /users/logout
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/users/logout
+    Example Request URI: https://karya.herokuapp.com/users/logout
     Request Header: Auth: authToken (JSON Web Token)
     
     Note: Successful logout destroys the Auth token and returns a 204 HTTP status. 
@@ -124,7 +124,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
 
 ###### Reset user password
     Definition: POST /users/reset
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/users/reset
+    Example Request URI: https://karya.herokuapp.com/users/reset
     Request Parameters: email (string)
     Response Body: {
                     "message": "pincode sent via email"
@@ -134,7 +134,7 @@ Karya a basic Node.js based todo API developed as a part of learning Node.js/Exp
 
 ###### Updated user password
     Definition: POST /users/update
-    Example Request URI: https://todo-api-nodejs.herokuapp.com/users/update
+    Example Request URI: https://karya.herokuapp.com/users/update
     Request Parameters: email (string)
                         password (string) -> new password to update
                         pincode: (string) -> received via email while POST /users/reset request
